@@ -6,7 +6,6 @@ import type { Prompt } from '../models/prompt';
 export class MockLLM implements LLM {
   async generate(prompt: Prompt): Promise<string> {
     console.log('Prompt sent to LLM:', prompt);
-
-    return 'Employees are eligible for 20 annual leaves.';
+    return Promise.resolve('Employees are eligible for 20 annual leaves.');
   }
 }

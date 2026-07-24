@@ -1,0 +1,1 @@
+export const DOCUMENT_LOADER_TOKEN = Symbol('DOCUMENT_LOADER_TOKEN');

@@ -4,8 +4,8 @@ import { RetrievedChunk } from '../models/retrieved-chunk';
 
 @Injectable()
 export class MockRetriever implements Retriever {
-  async retrieve(question: string): Promise<RetrievedChunk[]> {
-    return [
+  async retrieve(_question: string): Promise<RetrievedChunk[]> {
+    return Promise.resolve([
       {
         id: 'chunk-1',
         content: 'Employees are eligible for 20 days of annual leave.',
@@ -20,6 +20,6 @@ export class MockRetriever implements Retriever {
         pageNumber: 8,
         score: 0.91,
       },
-    ];
+    ]);
   }
 }

@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 
 import { EMBEDDING_GENERATOR_TOKEN } from './constants/embedding-generator.constants';
-import { MockEmbeddingGenerator } from './generators/mock-embedding-generator';
+import { GeminiEmbeddingGenerator } from './generators/gemini-embedding.generator';
 
 @Module({
   providers: [
     {
       provide: EMBEDDING_GENERATOR_TOKEN,
-      useClass: MockEmbeddingGenerator,
+      useClass: GeminiEmbeddingGenerator,
     },
   ],
   exports: [EMBEDDING_GENERATOR_TOKEN],

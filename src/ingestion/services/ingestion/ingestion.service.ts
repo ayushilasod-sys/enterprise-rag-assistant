@@ -28,14 +28,12 @@ export class IngestionService {
   async ingest(source: string): Promise<IngestionResult> {
     // Step 1
     const document = await this.documentLoader.load(source);
-    console.log('Document:', document);
+    //console.log('Document:', document);
 
     const chunks = this.chunker.chunk(document);
-    console.log('Chunks:', chunks);
     // Step 3
     const embeddedChunks =
       await this.embeddingGenerator.generateDocumentEmbeddings(chunks);
-    console.log('Embedded Chunks:', embeddedChunks);
     // Step 4
     await this.vectorStore.store(embeddedChunks);
 

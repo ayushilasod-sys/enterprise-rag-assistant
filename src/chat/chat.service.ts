@@ -23,13 +23,13 @@ export class ChatService {
   async chat(request: ChatRequestDto): Promise<ChatResponseDto> {
     // 1. Retrieve relevant knowledge
     const chunks = await this.retriever.retrieve(request.question);
-    console.log(chunks);
+    console.log('chunks Length :', chunks.length);
     // 2. Build the prompt
     const prompt = this.promptBuilder.build(request.question, chunks);
-    console.log(prompt);
+    console.log('Prompt:', prompt);
     // 3. Generate the answer
     const answer = await this.llm.generate(prompt);
-    console.log(answer);
+    console.log('Answer:', answer);
     // 4. Return the API response
     return {
       answer,

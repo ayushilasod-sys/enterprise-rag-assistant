@@ -1,8 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ChatModule } from './chat/chat.module';
 import { IngestionModule } from './ingestion/ingestion.module';
+import { EmbeddingModule } from './embedding/embedding.module';
+import { VectorStoreModule } from './vector-store/vector-store.module';
+import { AppConfigModule } from './config/app-config.module';
 
 @Module({
-  imports: [ChatModule, IngestionModule],
+  imports: [
+    AppConfigModule,
+    ChatModule,
+    IngestionModule,
+    EmbeddingModule,
+    VectorStoreModule,
+  ],
 })
 export class AppModule {}

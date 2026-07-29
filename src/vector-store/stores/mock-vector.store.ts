@@ -11,12 +11,10 @@ export class MockVectorStore implements VectorStore {
 
   async store(chunks: EmbeddedChunk[]): Promise<void> {
     this.chunks.push(...chunks);
-    console.log('Stored chunks in MockVectorStore:', this.chunks);
     return Promise.resolve();
   }
 
   async search(request: VectorSearchRequest): Promise<RetrievedChunk[]> {
-    console.log('Searching in MockVectorStore with request:', request);
     const retrievedChunks = this.chunks
       .slice(0, request.topK)
       .map((embeddedChunk) => ({

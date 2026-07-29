@@ -8,10 +8,10 @@ import { EMBEDDING_GENERATOR_TOKEN } from '../embedding/constants/embedding-gene
 
 import { MockDocumentLoader } from './loaders/mock-document.loader';
 import { FixedSizeChunker } from './chunkers/fixed-size.chunker';
-import { MockEmbeddingGenerator } from '../embedding/generators/mock-embedding-generator';
 import { IngestionController } from './controllers/ingestion.controller';
 import { VectorStoreModule } from 'src/vector-store/vector-store.module';
 import { EmbeddingModule } from 'src/embedding/embedding.module';
+import { GeminiEmbeddingGenerator } from 'src/embedding/generators/gemini-embedding.generator';
 
 @Module({
   imports: [EmbeddingModule, VectorStoreModule],
@@ -31,7 +31,7 @@ import { EmbeddingModule } from 'src/embedding/embedding.module';
 
     {
       provide: EMBEDDING_GENERATOR_TOKEN,
-      useClass: MockEmbeddingGenerator,
+      useClass: GeminiEmbeddingGenerator,
     },
   ],
   exports: [IngestionService],

@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 
 import { VECTOR_STORE_TOKEN } from './constants/vector-store.constants';
-import { MockVectorStore } from './stores/mock-vector.store';
+import { PineconeVectorStore } from './stores/pinecone-vector.store';
 
 @Module({
   providers: [
     {
       provide: VECTOR_STORE_TOKEN,
-      useClass: MockVectorStore,
+      useClass: PineconeVectorStore,
     },
   ],
   exports: [VECTOR_STORE_TOKEN],

@@ -2,16 +2,17 @@ import { Module } from '@nestjs/common';
 import { ChatController } from './chat.controller';
 import { ChatService } from './chat.service';
 import { RETRIEVER } from './constants/retriever.constants';
-import { MockLLM } from './llm/mock.llm';
 import { LLM_TOKEN } from './constants/llm.constants';
 import { PROMPT_BUILDER } from './constants/prompt-builder.constants';
 import { DefaultPromptBuilder } from './prompt-builders/default-prompt.builder';
 import { DefaultRetriever } from './retrievers/default.retriever';
 import { EmbeddingModule } from 'src/embedding/embedding.module';
 import { VectorStoreModule } from 'src/vector-store/vector-store.module';
+import { GeminiLLM } from './llm/gemini.llm';
+import { AppConfigModule } from 'src/config/app-config.module';
 
 @Module({
-  imports: [EmbeddingModule, VectorStoreModule],
+  imports: [AppConfigModule, EmbeddingModule, VectorStoreModule],
   controllers: [ChatController],
   providers: [
     ChatService,
@@ -28,10 +29,10 @@ import { VectorStoreModule } from 'src/vector-store/vector-store.module';
       useExisting: DefaultPromptBuilder,
     },
 
-    MockLLM,
+    GeminiLLM,
     {
       provide: LLM_TOKEN,
-      useExisting: MockLLM,
+      useExisting: GeminiLLM,
     },
   ],
 })

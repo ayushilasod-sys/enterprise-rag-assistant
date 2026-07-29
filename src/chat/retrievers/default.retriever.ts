@@ -8,8 +8,7 @@ import { EMBEDDING_GENERATOR_TOKEN } from '../../embedding/constants/embedding-g
 
 import type { VectorStore } from '../../vector-store/interfaces/vector-store.interface';
 import { VECTOR_STORE_TOKEN } from '../../vector-store/constants/vector-store.constants';
-
-const DEFAULT_TOP_K = 5;
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class DefaultRetriever implements Retriever {
@@ -19,15 +18,19 @@ export class DefaultRetriever implements Retriever {
 
     @Inject(VECTOR_STORE_TOKEN)
     private readonly vectorStore: VectorStore,
+
+    private readonly configService: ConfigService,
   ) {}
 
   async retrieve(question: string): Promise<RetrievedChunk[]> {
+    const topK = this.configService.get<number>('topK') ?? 5;
+
     const embedding =
       await this.embeddingGenerator.generateQueryEmbedding(question);
     console.log('Query Embedding:', embedding);
     return this.vectorStore.search({
       embedding,
-      topK: DEFAULT_TOP_K,
+      topK,
     });
   }
 }

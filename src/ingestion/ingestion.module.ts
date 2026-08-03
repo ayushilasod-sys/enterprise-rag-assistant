@@ -11,7 +11,7 @@ import { FixedSizeChunker } from './chunkers/fixed-size.chunker';
 import { IngestionController } from './controllers/ingestion.controller';
 import { VectorStoreModule } from 'src/vector-store/vector-store.module';
 import { EmbeddingModule } from 'src/embedding/embedding.module';
-import { GeminiEmbeddingGenerator } from 'src/embedding/generators/gemini-embedding.generator';
+import { GeminiEmbeddingGenerator } from 'src/ai/providers/gemini/gemini.embedding';
 
 @Module({
   imports: [EmbeddingModule, VectorStoreModule],

@@ -4,6 +4,7 @@ import { IngestionModule } from './ingestion/ingestion.module';
 import { EmbeddingModule } from './embedding/embedding.module';
 import { VectorStoreModule } from './vector-store/vector-store.module';
 import { AppConfigModule } from './config/app-config.module';
+import { EvaluationModule } from './evaluation/evaluation.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AppConfigModule } from './config/app-config.module';
     IngestionModule,
     EmbeddingModule,
     VectorStoreModule,
+    EvaluationModule,
   ],
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import type { EmbeddingGenerator } from '../interfaces/embedding-generator.interface';
+import type { EmbeddingGenerator } from '../../ai/interfaces/embedding.interface';
 import type { DocumentChunk } from '../../ingestion/models/document-chunk';
 import type { EmbeddedChunk } from '../../ingestion/models/embedded-chunk';
 

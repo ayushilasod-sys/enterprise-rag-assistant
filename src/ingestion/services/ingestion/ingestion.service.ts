@@ -4,7 +4,7 @@ import { DOCUMENT_LOADER_TOKEN } from 'src/ingestion/constants/document-loader.c
 import { EMBEDDING_GENERATOR_TOKEN } from 'src/embedding/constants/embedding-generator.constants';
 import type { Chunker } from 'src/ingestion/interfaces/chunker.interface';
 import type { DocumentLoader } from 'src/ingestion/interfaces/document-loader.interface';
-import type { EmbeddingGenerator } from 'src/embedding/interfaces/embedding-generator.interface';
+import type { EmbeddingGenerator } from 'src/ai/interfaces/embedding.interface';
 import { IngestionResult } from 'src/ingestion/models/ingestion-result';
 import { VECTOR_STORE_TOKEN } from 'src/vector-store/constants/vector-store.constants';
 import type { VectorStore } from 'src/ingestion/interfaces/vector-store.interface';

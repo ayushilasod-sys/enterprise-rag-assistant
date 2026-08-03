@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GoogleGenAI } from '@google/genai';
 
-import type { EmbeddingGenerator } from '../interfaces/embedding-generator.interface';
+import type { EmbeddingGenerator } from '../../interfaces/embedding.interface';
 import type { DocumentChunk } from 'src/ingestion/models/document-chunk';
-import type { EmbeddedChunk } from '../models/embedded-chunk';
+import type { EmbeddedChunk } from '../../../embedding/models/embedded-chunk';
 
 @Injectable()
 export class GeminiEmbeddingGenerator implements EmbeddingGenerator {

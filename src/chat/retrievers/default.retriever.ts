@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import type { Retriever } from '../interfaces/retriever.interface';
 import type { RetrievedChunk } from '../models/retrieved-chunk';
 
-import type { EmbeddingGenerator } from '../../embedding/interfaces/embedding-generator.interface';
+import type { EmbeddingGenerator } from '../../ai/interfaces/embedding.interface';
 import { EMBEDDING_GENERATOR_TOKEN } from '../../embedding/constants/embedding-generator.constants';
 
 import type { VectorStore } from '../../vector-store/interfaces/vector-store.interface';

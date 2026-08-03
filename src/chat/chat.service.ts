@@ -3,8 +3,8 @@ import { ChatRequestDto } from './dto/chat-request.dto';
 import { ChatResponseDto } from './dto/chat-response.dto';
 import { RETRIEVER } from './constants/retriever.constants';
 import type { Retriever } from './interfaces/retriever.interface';
-import { LLM_TOKEN } from './constants/llm.constants';
-import type { LLM } from './interfaces/llm.interface';
+import { LLM_TOKEN } from '../ai/constants/llm.constants';
+import type { LLM } from '../ai/interfaces/llm.interface';
 import type { PromptBuilder } from './interfaces/prompt-builder.interface';
 import { PROMPT_BUILDER } from './constants/prompt-builder.constants';
 

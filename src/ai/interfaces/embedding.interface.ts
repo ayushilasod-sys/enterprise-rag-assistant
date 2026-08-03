@@ -1,5 +1,5 @@
 import type { DocumentChunk } from '../../ingestion/models/document-chunk';
-import type { EmbeddedChunk } from '../models/embedded-chunk';
+import type { EmbeddedChunk } from '../../embedding/models/embedded-chunk';
 
 export interface EmbeddingGenerator {
   generateDocumentEmbeddings(chunks: DocumentChunk[]): Promise<EmbeddedChunk[]>;

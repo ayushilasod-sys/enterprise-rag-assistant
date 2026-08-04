@@ -1,4 +1,6 @@
-export class GroundednessPromptBuilder {
+import { EvaluationPromptBuilder } from 'src/evaluation/interfaces/evaluation-prompt-builder.interface';
+
+export class GroundednessPromptBuilder implements EvaluationPromptBuilder {
   build(question: string, context: string, answer: string): string {
     return `
 You are an expert evaluator for Retrieval-Augmented Generation (RAG) systems.

@@ -23,8 +23,6 @@ export async function retryWithBackoff<T>(
     try {
       return await operation();
     } catch (error) {
-      console.log(error);
-      console.log(JSON.stringify(error, null, 2));
       lastError = error;
 
       if (attempt === maxRetries || !shouldRetry(error)) {

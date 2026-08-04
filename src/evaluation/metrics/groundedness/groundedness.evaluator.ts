@@ -36,7 +36,7 @@ export class GroundednessEvaluator implements Evaluator {
       metric: EvaluationMetric.GROUNDEDNESS,
       score: evaluation.score,
       reason: evaluation.reason,
-      value: evaluation.claims,
+      claims: evaluation.claims,
     };
   }
 }

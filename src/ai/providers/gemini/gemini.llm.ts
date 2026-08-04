@@ -40,6 +40,7 @@ export class GeminiLLM implements LLM {
         },
       },
     );
+    console.log('Gemini LLM Response Ge:');
     return response.text ?? '';
   }
 

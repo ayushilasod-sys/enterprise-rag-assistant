@@ -1,42 +1,21 @@
-import { Inject, Injectable } from '@nestjs/common';
-
-import type { LLM } from 'src/ai/interfaces/llm.interface';
-import { LLM_TOKEN } from 'src/ai/constants/llm.constants';
-
-import { Evaluator } from '../../interfaces/evaluator.interface';
-import { EvaluationMetric } from '../../interfaces/evaluation-metric.enum';
-import { EvaluationRequest } from '../../interfaces/evaluation-request.interface';
-import { EvaluationResult } from '../../interfaces/evaluation-result.interface';
-
-import { GroundednessPromptBuilder } from './groundedness.prompt';
+import { EvaluationMetric } from 'src/evaluation/interfaces/evaluation-metric.enum';
 import { GroundednessParser } from './groundedness.parser';
+import { GroundednessPromptBuilder } from './groundedness.prompt';
+import { AbstractLLMEvaluator } from 'src/evaluation/base/abstract-llm.evaluator';
+import { GroundednessClaim } from './groundedness.types';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class GroundednessEvaluator implements Evaluator {
-  private readonly promptBuilder = new GroundednessPromptBuilder();
-  private readonly parser = new GroundednessParser();
+export class GroundednessEvaluator extends AbstractLLMEvaluator<GroundednessClaim> {
+  protected metric(): EvaluationMetric {
+    return EvaluationMetric.GROUNDEDNESS;
+  }
 
-  constructor(
-    @Inject(LLM_TOKEN)
-    private readonly llm: LLM,
-  ) {}
+  protected promptBuilder() {
+    return new GroundednessPromptBuilder();
+  }
 
-  async evaluate(request: EvaluationRequest): Promise<EvaluationResult> {
-    const prompt = this.promptBuilder.build(
-      request.question,
-      request.context,
-      request.answer,
-    );
-
-    const response = await this.llm.generateText(prompt);
-
-    const evaluation = this.parser.parse(response);
-
-    return {
-      metric: EvaluationMetric.GROUNDEDNESS,
-      score: evaluation.score,
-      reason: evaluation.reason,
-      claims: evaluation.claims,
-    };
+  protected parser() {
+    return new GroundednessParser();
   }
 }

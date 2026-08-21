@@ -6,4 +6,5 @@ export enum EvaluationMetric {
   COST = 'Cost',
   ANSWER_CORRECTNESS = 'AnswerCorrectness',
   CORRECTNESS = 'Correctness',
+  RELEVANCE = 'RELEVANCE',
 }
